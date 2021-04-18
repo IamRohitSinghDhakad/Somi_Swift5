@@ -1,0 +1,6 @@
+framework module Pods_Somi {
+  umbrella header "Pods-Somi-umbrella.h"
+
+  export *
+  module * { export * }
+}
