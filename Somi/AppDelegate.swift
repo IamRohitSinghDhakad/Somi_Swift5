@@ -32,18 +32,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UNUserNotificationCenter.current().delegate = self
         
+        let deviceID = UIDevice.current.identifierForVendor!.uuidString
+        UserDefaults.standard.setValue(deviceID, forKey: UserDefaults.Keys.strVenderId)
+         print(deviceID)
+        
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
-        
+        FirebaseApp.configure()
         self.registerForRemoteNotification()
         Messaging.messaging().delegate = self
         
         (UIApplication.shared.delegate as? AppDelegate)?.self.window = window
         
         self.checkLoginStatus()
-        
+    
         return true
     }
 
@@ -55,6 +59,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("did enter background")
     }
     
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let tokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+           print("this will return '32 bytes' in iOS 13+ rather than the token \(tokenString)")
+    }
 
 }
 
@@ -90,7 +99,6 @@ extension AppDelegate{
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
     }
-    
 }
 
 //MARK:- notification setup
@@ -124,11 +132,11 @@ extension AppDelegate : MessagingDelegate{
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         print("Firebase registration token: \(String(describing: fcmToken))")
-     //   objAppShareData.strFirebaseToken = fcmToken ?? ""
+        objAppShareData.strFirebaseToken = fcmToken ?? ""
     }
 
     func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
-      //  objAppShareData.strFirebaseToken = fcmToken
+        objAppShareData.strFirebaseToken = fcmToken
         ConnectToFCM()
     }
     
@@ -232,22 +240,29 @@ extension AppDelegate : MessagingDelegate{
    }
     
     func handleNotificationWithNotificationData(dict:[String:Any]){
-        var strType = ""
-        var bookingID = ""
-        if let notiType = dict["notification_type"] as? String{
-            strType = notiType
-        }
-        if let type = dict["type"] as? Int{
-            strType = String(type)
-        }else if let type = dict["type"] as? String{
-            strType = type
-        }
-                
-        if let id = dict["reference_id"] as? Int{
-            bookingID = String(id)
-        }else if let id = dict["reference_id"] as? String{
-            bookingID = id
-        }
+        print(dict)
+        let userID = dict["gcm.notification.user_request_id"]as? String ?? ""
+        print(userID)
+        objAppShareData.isFromNotification = true
+        objAppShareData.userReqID = dict["gcm.notification.user_request_id"] as? String ?? "0"
+        self.HomeNavigation()
+        
+//        var strType = ""
+//        var bookingID = ""
+//        if let notiType = dict["notification_type"] as? String{
+//            strType = notiType
+//        }
+//        if let type = dict["type"] as? Int{
+//            strType = String(type)
+//        }else if let type = dict["type"] as? String{
+//            strType = type
+//        }
+//
+//        if let id = dict["reference_id"] as? Int{
+//            bookingID = String(id)
+//        }else if let id = dict["reference_id"] as? String{
+//            bookingID = id
+//        }
 //        objAppShareData.notificationDict = dict
 //        objAppShareData.isFromNotification = true
 //        objAppShareData.notificationType = strType

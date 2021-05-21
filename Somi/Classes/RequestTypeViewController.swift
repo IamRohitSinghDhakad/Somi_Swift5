@@ -10,6 +10,7 @@ import SDWebImage
 
 class RequestTypeViewController: UIViewController {
 
+    //MARK:- IBoutlets
     @IBOutlet weak var cvRequestType: UICollectionView!
     @IBOutlet weak var vwHeaderBg: UIView!
     @IBOutlet weak var vwBtnBg: UIView!
@@ -18,21 +19,29 @@ class RequestTypeViewController: UIViewController {
     var strLongitude = ""
     var strAddress = ""
     var strSelectedCategoryID = ""
+    var selectedIndex = -1
+    var userType = ""
     
     var arrData = [GetCategories]()
+    
+    //MARK:- App Lyf Cycyle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.cvRequestType.delegate = self
         self.cvRequestType.dataSource = self
         
-        // Do any additional setup after loading the view.
-        let userType = UserDefaults.standard.value(forKey: UserDefaults.Keys.userType)as? String ?? "Male"
-        self.setStyling(strUserType: userType)
-        
         self.call_WsGetCategories()
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Do any additional setup after loading the view.
+        self.userType = UserDefaults.standard.value(forKey: UserDefaults.Keys.userType)as? String ?? "Male"
+        self.setStyling(strUserType: userType)
+        
+    }
     func setStyling(strUserType:String){
         if strUserType == "Male"{
             self.vwHeaderBg.backgroundColor = UIColor.init(named: "appBlueColor")
@@ -46,8 +55,14 @@ class RequestTypeViewController: UIViewController {
         }
     }
 
+    //MARK:- IBActions
     @IBAction func actionBtnSend(_ sender: Any) {
-        self.call_WsSendRequest(strCategoryID: strSelectedCategoryID)
+        if self.selectedIndex == -1{
+            objAlert.showAlert(message: "Please select request type first.", title: "Alert", controller: self)
+        }else{
+            self.call_WsSendRequest(strCategoryID: strSelectedCategoryID)
+        }
+        
         
     }
     
@@ -57,7 +72,7 @@ class RequestTypeViewController: UIViewController {
     
 }
 
-
+//MARK:- UICollectionView Delagates and Datasources
 extension RequestTypeViewController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.arrData.count
@@ -76,6 +91,20 @@ extension RequestTypeViewController: UICollectionViewDelegate,UICollectionViewDa
                 let url = URL(string: profilePic)
                 cell.imgVwCategory.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "logo"))
             }
+            
+            if self.selectedIndex == indexPath.row{
+                if self.userType == "Male"{
+                    cell.vwContainer.layer.borderWidth = 1.0
+                    cell.vwContainer.layer.borderColor = UIColor.init(named: "appBlueColor")?.cgColor
+                    
+                }else{
+                    cell.vwContainer.layer.borderWidth = 1.0
+                    cell.vwContainer.layer.borderColor = UIColor.init(named: "appPinkColor")?.cgColor
+                }
+            }else{
+                cell.vwContainer.layer.borderColor = UIColor.clear.cgColor
+            }
+            
             return cell
         }else{
             return UICollectionViewCell()
@@ -84,8 +113,10 @@ extension RequestTypeViewController: UICollectionViewDelegate,UICollectionViewDa
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedIndex = indexPath.row
         let obj = self.arrData[indexPath.row]
         self.strSelectedCategoryID = obj.strCategoryID
+        self.cvRequestType.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

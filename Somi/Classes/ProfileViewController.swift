@@ -16,7 +16,12 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var lblAllergy: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var imgVwUser: UIImageView!
+    @IBOutlet var imgVwMale: UIImageView!
+    @IBOutlet var imgVwFemale: UIImageView!
+    @IBOutlet var lblEmergencyNumber: UILabel!
+    @IBOutlet var imgVwEditProfile: UIImageView!
     
+    var urlImage = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +42,11 @@ class ProfileViewController: UIViewController {
         if strUserType == "Male"{
             self.vwHeaderBg.backgroundColor = UIColor.init(named: "appBlueColor")
             self.view.backgroundColor = UIColor.init(named: "appBlueColor")
+            self.imgVwEditProfile.image = #imageLiteral(resourceName: "edit_profile_icon")
         }else{
             self.vwHeaderBg.backgroundColor = UIColor.init(named: "appPinkColor")
             self.view.backgroundColor = UIColor.init(named: "appPinkColor")
+            self.imgVwEditProfile.image = #imageLiteral(resourceName: "edit_pink")
         }
     }
     @IBAction func actionBtnBackOnheader(_ sender: Any) {
@@ -55,9 +62,10 @@ class ProfileViewController: UIViewController {
         vc.dictUserData["blood"] = self.lblBloodGroup.text!
         vc.dictUserData["allergy"] = self.lblAllergy.text!
         vc.dictUserData["address"] = self.lblAddress.text!
+        vc.dictUserData["user_image"] = self.urlImage
+        vc.dictUserData["emergency_number"] = self.lblEmergencyNumber.text!
 
         self.navigationController?.pushViewController(vc, animated: true)
-        
     }
 }
 
@@ -111,16 +119,41 @@ extension ProfileViewController{
                     }
                     
                     if let profilePic = user_details["user_image"] as? String{
+                        self.urlImage = profilePic
                         if profilePic != "" {
                             let url = URL(string: profilePic)
                             self.imgVwUser.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "img"))
                         }
                     }
-                   
-                    self.lblAddress.text = "United State, HuntingTown"
+                    
+                    if let emergency_number = user_details["emergency_number"]as? String{
+                        self.lblEmergencyNumber.text = emergency_number
+                    }else  if let emergency_number = user_details["emergency_number"]as? Int{
+                        self.lblEmergencyNumber.text = "\(emergency_number)"
+                    }
                     
                     
+                    if let address = user_details["address"]as? String{
+                        self.lblAddress.text = address
+                    }else{
+                        self.lblAddress.text = "N/A"
+                    }
                     
+                    if let gender = user_details["sex"]as? String{
+                        if gender == "Male"{
+                            self.imgVwMale.image = #imageLiteral(resourceName: "blue")
+                            self.imgVwFemale.image = #imageLiteral(resourceName: "pink")
+                            self.imgVwEditProfile.image = #imageLiteral(resourceName: "edit_profile_icon")
+                            self.vwHeaderBg.backgroundColor = UIColor.init(named: "appBlueColor")
+                            self.view.backgroundColor = UIColor.init(named: "appBlueColor")
+                        }else{
+                            self.imgVwFemale.image = #imageLiteral(resourceName: "check")
+                            self.imgVwMale.image = #imageLiteral(resourceName: "uncheck")
+                            self.imgVwEditProfile.image = #imageLiteral(resourceName: "edit_pink")
+                            self.vwHeaderBg.backgroundColor = UIColor.init(named: "appPinkColor")
+                            self.view.backgroundColor = UIColor.init(named: "appPinkColor")
+                        }
+                    }
                     
                 }
                 

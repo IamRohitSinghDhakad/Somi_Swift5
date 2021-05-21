@@ -15,6 +15,7 @@ class MyRequestsModel: NSObject {
     var strName:String = ""
     var isAdded = Bool()
     var isContactAdded = Int()
+    var strCategoryImage:String = ""
     
 
     init(dict : [String:Any]) {
@@ -30,6 +31,12 @@ class MyRequestsModel: NSObject {
         if let datetime = dict["datetime"] as? String{
             self.strDateTime = datetime
         }
+        
+        if let catImage = dict["category_image"] as? String{
+            self.strCategoryImage = catImage
+        }
+        
+        
     }
     
 }

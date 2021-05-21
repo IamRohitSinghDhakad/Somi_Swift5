@@ -1,0 +1,91 @@
+/*
+  Localizable.strings
+  Star
+
+  Created by ios-deepak b on 28/03/20.
+  Copyright © 2020 ios-deepak b. All rights reserved.
+*/
+
+/*
+//  for demo use
+ lblHeader.text = LocalizationSystem.sharedInstance.localizedStringForKey(key: "header_text", comment: "")
+ lblCurrentLanguage.text = LocalizationSystem.sharedInstance.getLanguage()
+ btnChangeLangauge.setTitle(LocalizationSystem.sharedInstance.localizedStringForKey(key: "change_language", comment: ""), for: .normal)
+ //
+ lblbottom.text = LocalizationSystem.sharedInstance.localizedStringForKey(key: "bottomlbl", comment: "")
+ txtname.placeholder = LocalizationSystem.sharedInstance.localizedStringForKey(key: "placeholder", comment: "")
+
+*/
+// deepak
+//MARK: For Common Module
+// TODO: For Settings Module & Notification
+//LOGIN Screen
+"LOGIN" = "LOGIN";
+"Email" = "Email";
+"Password" = "Password";
+"Foegot Password" = "Foegot Password";
+"Change Language" = "Change Language";
+"Logout" = "Logout";
+"Not registered yet? Please" = "Not registered yet? Please";
+"Sign Up" = "Sign Up";
+
+//Forgot Password Screen
+"RECOVER PASSWORD" = "RECOVER PASSWORD";
+"Forgot your password?" = "Forgot your password?";
+"Enter your email address to get reset password" = "Enter your email address to get reset password";
+"SUBMIT" = "SUBMIT";
+
+//SignUP
+"SIGN UP" = "SIGN UP";
+"Username" = "Username";
+"Phone Number" = "Phone Number";
+"Select Gender" = "Select Gender";
+"Male" = "Male";
+"Female" = "Female";
+"Address" = "Address";
+"Already registered? Please" = "Already registered? Please";
+
+//Add Contacts
+"Add Contacts" = "Add Contacts";
+"Add" = "Add";
+"Remove" = "Remove";
+"Save" = "Save";
+"Next" = "Next";
+
+//Home
+"Home" = "Home";
+"Call" = "Call";
+"Text" = "Text";
+
+//Request Type
+"Request Type" =  "Request Type";
+"Send" = "Send";
+
+//Side Menu
+"PROFILE" = "PROFILE";
+"My Contact List" = "My Contact List";
+"History" = "History";
+"Notification" = "Notification";
+"About Us" = "About Us";
+"Logout" = "Logout";
+
+//Contact List
+"Contact List" = "Contact List";
+
+//History
+"History" = "History";
+"Get Requests" = "Get Requests";
+"My Requests" = "My Requests";
+
+//Notification
+"Notification" = "Notification";
+"Track" = "Track";
+"Share" = "Share";
+
+
+//MemberShip
+"Your Current Plan Is" = "Your Current Plan Is";
+"Subscribe" = "Subscribe";
+"Membership" = "Membership";
+"Days" = "Days";
+"Plan" = "Plan";

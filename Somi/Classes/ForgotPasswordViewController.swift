@@ -9,6 +9,7 @@ import UIKit
 
 class ForgotPasswordViewController: UIViewController {
 
+    //MARK:- IBOutlet
     @IBOutlet weak var vwBtnBg: UIView!
     @IBOutlet weak var tfEmail: UITextField!
     
@@ -17,6 +18,10 @@ class ForgotPasswordViewController: UIViewController {
         
         self.tfEmail.delegate = self
         
+    }
+    
+    //MARK:- App Lyf Cycle
+    override func viewWillAppear(_ animated: Bool) {
         let userType = UserDefaults.standard.value(forKey: UserDefaults.Keys.userType)as? String ?? "Male"
         self.setStyling(strUserType: userType)
     }
@@ -30,12 +35,14 @@ class ForgotPasswordViewController: UIViewController {
         }
     }
     
+    //MARK:- IBAction
     @IBAction func actionBtnSubmit(_ sender: Any) {
         self.validateForSignUp()
     }
     @IBAction func actionBtnBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     //MARK:- All Validations
     func validateForSignUp(){
      
@@ -53,6 +60,7 @@ class ForgotPasswordViewController: UIViewController {
 
 }
 
+//MARK:- UITextFieldDelages
 extension ForgotPasswordViewController : UITextFieldDelegate{
     // TextField delegate method
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

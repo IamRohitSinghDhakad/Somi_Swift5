@@ -7,54 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7238354F-230C-4175-85AA-C298455CDB75"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Somi/Classes/ProfileViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "call_GetProfile(strUserID:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1DF8DF82-588C-4800-9E94-2358B959E05F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Somi/Classes/ProfileViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "call_GetProfile(strUserID:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "28CD53DD-B85A-4810-AF31-EA4F464DFC56"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Somi/Classes/ProfileViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "call_GetProfile(strUserID:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "303D9006-D2FA-4850-983D-8C56DBAE8484"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -62,57 +14,9 @@
             filePath = "Somi/Classes/AddContactsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FC7BDCEB-7B8C-4141-AF60-62B30D2F457F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Somi/Classes/AddContactsViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "call_WsGetContactList(strUserID:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E4CF843B-DA8D-4F91-96C4-0EB892FCDB4B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Somi/Classes/AddContactsViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
-            landmarkName = "call_WsGetContactList(strUserID:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9403336A-BA73-44DA-95F1-100BE97DFC67"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Somi/Classes/ContactListViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -126,8 +30,8 @@
             filePath = "Somi/Classes/SignUpViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "callWebserviceForUploadUserImage()"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,13 +46,13 @@
             filePath = "Somi/Classes/SignUpViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
             landmarkName = "callWebserviceForUploadUserImage()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "9EFE82DE-07E5-4D3E-8209-AF74790F2E20 - dda6fd74658c65c0"
+                  uuid = "9EFE82DE-07E5-4D3E-8209-AF74790F2E20 - dda6fd74658c65a5"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -158,12 +62,12 @@
                   urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi/Somi/Classes/SignUpViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "282"
-                  endingLineNumber = "282"
-                  offsetFromSymbolStart = "5552">
+                  startingLineNumber = "285"
+                  endingLineNumber = "285"
+                  offsetFromSymbolStart = "6667">
                </Location>
                <Location
-                  uuid = "9EFE82DE-07E5-4D3E-8209-AF74790F2E20 - edd3a31a36e47473"
+                  uuid = "9EFE82DE-07E5-4D3E-8209-AF74790F2E20 - edd3a31a36e474d4"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -173,9 +77,9 @@
                   urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi/Somi/Classes/SignUpViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "283"
-                  endingLineNumber = "283"
-                  offsetFromSymbolStart = "72">
+                  startingLineNumber = "286"
+                  endingLineNumber = "286"
+                  offsetFromSymbolStart = "216">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -183,95 +87,111 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "36BE526D-61D7-487D-8E7C-698ED1A789DB"
+            uuid = "A6F7C5F3-8783-4340-8409-B1899706E895"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Somi/Classes/EditProfileViewController.swift"
+            filePath = "Somi/Classes/HistoryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "319"
-            endingLineNumber = "319"
-            landmarkName = "callWebserviceUpdateProfile()"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "call_WsGetMyrequest(strUserID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AA9ED918-9B9D-429D-A2A2-8D15E4BD26E7"
+            uuid = "48F24C63-750D-4061-B728-51DF955821AD"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Somi/Classes/EditProfileViewController.swift"
+            filePath = "Somi/Classes/SideMenuViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
-            landmarkName = "callWebserviceUpdateProfile()"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "call_WSLogout(strUserID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7894E5CD-D54B-4BF6-8361-5AC6C33FD325"
+            uuid = "4FFECFCE-CF9E-4E82-B4ED-D7FD1A54FC78"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Somi/Classes/EditProfileViewController.swift"
+            filePath = "Somi/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
-            landmarkName = "callWebserviceUpdateProfile()"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B0A638A5-A542-4010-8588-D363C6815DFB"
+            uuid = "6BD260CA-E7D0-4FA9-A9BC-279C0EE091D9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Somi/Classes/EditProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
-            landmarkName = "callWebserviceUpdateProfile()"
+            startingLineNumber = "257"
+            endingLineNumber = "257"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B7D3F40F-7D0C-4A90-84A9-D11556174A10"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Somi/Classes/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "call_WsLogin()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "B0A638A5-A542-4010-8588-D363C6815DFB - f0d5ced11740829c"
+                  uuid = "B7D3F40F-7D0C-4A90-84A9-D11556174A10 - 5ae29b3ab5939f47"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Somi.EditProfileViewController.callWebserviceUpdateProfile() -&gt; ()"
+                  symbolName = "Somi.ViewController.call_WsLogin() -&gt; ()"
                   moduleName = "Somi"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi/Somi/Classes/EditProfileViewController.swift"
+                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi/Somi/Classes/ViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "309"
-                  endingLineNumber = "309"
-                  offsetFromSymbolStart = "4492">
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "2428">
                </Location>
                <Location
-                  uuid = "B0A638A5-A542-4010-8588-D363C6815DFB - 41941d236291dac6"
+                  uuid = "B7D3F40F-7D0C-4A90-84A9-D11556174A10 - 9ef71b5e888a5065"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; () in Somi.EditProfileViewController.callWebserviceUpdateProfile() -&gt; ()"
+                  symbolName = "closure #1 (Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; () in Somi.ViewController.call_WsLogin() -&gt; ()"
                   moduleName = "Somi"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi/Somi/Classes/EditProfileViewController.swift"
+                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi/Somi/Classes/ViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "310"
-                  endingLineNumber = "310"
-                  offsetFromSymbolStart = "136">
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "188">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -279,77 +199,95 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1F47F428-2A4A-40E6-B1A8-241F4E822961"
+            uuid = "72D4A119-3C3C-418A-B2F9-8AD9B4867E67"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Somi/Classes/HomeViewController.swift"
+            filePath = "Somi/Classes/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
-            landmarkName = "messageComposeViewController(_:didFinishWith:)"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "call_WsLogin()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B1718085-036E-4D7A-846B-A6E720E11CDC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Somi/Classes/EditProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "setStyling(strUserType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CA2888FF-838C-4C82-A668-6E58551F8EFB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Somi/Classes/MembershipViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
+            landmarkName = "call_SubscribePlan(strUserID:strPlanID:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B4D1ECB1-BEFC-44D5-9887-84EC5B382D45"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Somi/Classes/MembershipViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
+            landmarkName = "call_SubscribePlan(strUserID:strPlanID:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "1F47F428-2A4A-40E6-B1A8-241F4E822961 - 3e919ecc8262fbcf"
+                  uuid = "B4D1ECB1-BEFC-44D5-9887-84EC5B382D45 - bfa9bcdf5edeb210"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Somi.HomeViewController.messageComposeViewController(_: __C.MFMessageComposeViewController, didFinishWith: __C.MessageComposeResult) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; () in Somi.MembershipViewController.call_SubscribePlan(strUserID: Swift.String, strPlanID: Swift.String) -&gt; ()"
                   moduleName = "Somi"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi/Somi/Classes/HomeViewController.swift"
+                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi/Somi/Classes/MembershipViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "128"
-                  endingLineNumber = "128"
-                  offsetFromSymbolStart = "72">
+                  startingLineNumber = "234"
+                  endingLineNumber = "234"
+                  offsetFromSymbolStart = "1023">
                </Location>
                <Location
-                  uuid = "1F47F428-2A4A-40E6-B1A8-241F4E822961 - 3e919ecc8262fbcf"
+                  uuid = "B4D1ECB1-BEFC-44D5-9887-84EC5B382D45 - 71e1ffb15bcdc16f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Somi.HomeViewController.messageComposeViewController(_: __C.MFMessageComposeViewController, didFinishWith: __C.MessageComposeResult) -&gt; ()"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; () in Somi.MembershipViewController.call_SubscribePlan(strUserID: Swift.String, strPlanID: Swift.String) -&gt; ()"
                   moduleName = "Somi"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi/Somi/Classes/HomeViewController.swift"
+                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi/Somi/Classes/MembershipViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "128"
-                  endingLineNumber = "128"
-                  offsetFromSymbolStart = "108">
-               </Location>
-               <Location
-                  uuid = "1F47F428-2A4A-40E6-B1A8-241F4E822961 - 3e919ecc8262fbcf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Somi.HomeViewController.messageComposeViewController(_: __C.MFMessageComposeViewController, didFinishWith: __C.MessageComposeResult) -&gt; ()"
-                  moduleName = "Somi"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi/Somi/Classes/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "128"
-                  endingLineNumber = "128"
-                  offsetFromSymbolStart = "336">
-               </Location>
-               <Location
-                  uuid = "1F47F428-2A4A-40E6-B1A8-241F4E822961 - 3e919ecc8262fbcf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Somi.HomeViewController.messageComposeViewController(_: __C.MFMessageComposeViewController, didFinishWith: __C.MessageComposeResult) -&gt; ()"
-                  moduleName = "Somi"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi/Somi/Classes/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "128"
-                  endingLineNumber = "128"
-                  offsetFromSymbolStart = "560">
+                  startingLineNumber = "235"
+                  endingLineNumber = "235"
+                  offsetFromSymbolStart = "26">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -357,64 +295,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1CF4AF4D-F7E5-448C-82B5-7FE27682500B"
+            uuid = "324E5E37-0B1E-4B90-A3A8-1A41119FDD32"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Somi/Classes/HomeViewController.swift"
+            filePath = "Somi/Classes/MembershipViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "messageComposeViewController(_:didFinishWith:)"
+            startingLineNumber = "302"
+            endingLineNumber = "302"
+            landmarkName = "call_GetProfile(strUserID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B45302F9-81D5-4F3B-B8DD-E5460753DF24"
+            uuid = "B79AB8C6-4290-432B-A287-5BB3F5E6B281"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Somi/Classes/EditProfileViewController.swift"
+            filePath = "Somi/Classes/MembershipViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
-            landmarkName = "uploadImage(endUrl:imageData:parameters:onCompletion:onError:)"
+            startingLineNumber = "304"
+            endingLineNumber = "304"
+            landmarkName = "call_GetProfile(strUserID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "506BFDB4-2408-476C-91BB-AE948BD8F284"
+            uuid = "25C891D8-836F-48E4-8ED3-CF883591575D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Somi/Classes/EditProfileViewController.swift"
+            filePath = "Somi/Classes/HistoryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
-            landmarkName = "uploadImage(endUrl:imageData:parameters:onCompletion:onError:)"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "call_WsGetMyrequest(strUserID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "579ADC3D-96B0-4BA2-B0CE-D02250EA1B8A"
+            uuid = "BB32C096-CD0C-436F-AC48-4E950AFA9A88"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Somi/Classes/EditProfileViewController.swift"
+            filePath = "Somi/Classes/ContactListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "actionBtnSave(_:)"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
+            landmarkName = "call_WSDeleteUserContact(strContactID:Indexpath:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -96,6 +96,14 @@ class WebServiceManager: NSObject {
     func getCurrentTimeZone() -> String{
         return TimeZone.current.identifier
     }
+    
+    func APIHeaderGet() -> [String: String]{
+        let headers = [
+            "Content-Type": "application/json",
+            "cache-control": "no-cache",
+        ]
+        return headers
+    }
 }
 
 //MARK:- Webservice methods
@@ -165,9 +173,7 @@ extension WebServiceManager {
                     if message == "Invalid Auth Token" {
                         ObjAppdelegate.LoginNavigation()
                     }
-                    
                 }
-                
                 if let errorCode = dictionary["status_code"] as? Int{
                     let strErrorType = dictionary["error_type"] as? String ?? ""
                     let strMessage1 = dictionary["message"] as? String ?? ""
@@ -544,26 +550,33 @@ extension WebServiceManager {
             })
     }
     
-    
-//    func myImageUploadRequest(strURL:String, imageToUpload: UIImage, imgKey: String, params : [String:String], completion: @escaping (Bool,Any,String) -> ())  {
+//    func myImageUploadRequest(strUrl: String, imageToUpload: UIImage, imgKey: String, params : [String:String], completion: @escaping (Bool,Any,String) -> ())  {
 //
-//        let header: HTTPHeaders = ["authToken": strAuthToken ,
-//                                   "Accept": "application/json",
-//                                   "Content-Type": "application/x-www-form-urlencoded"]
-//        print(header)
-//        print(strURL)
+//        if !NetworkReachabilityManager()!.isReachable{
+//            let app = UIApplication.shared.delegate as? AppDelegate
+//            _ = app?.window
+//            //  objAlert.showAlertVc(title: k_noNetwork, controller: window!)
+//            //                DispatchQueue.main.async {
+//            //                    self.StopIndicator()
+//            //                }
+//            return
+//        }
 //
 //        let image = imageToUpload
 //
+//        let header: HTTPHeaders = [
+//            "Content-Type": "application/json",
+//            "cache-control": "no-cache",
+//        ]
 //
-//            AF.upload(multipartFormData: { multipartFormData in
+//          AF.upload(multipartFormData: { multipartFormData in
 //                            if let imageData = image.jpegData(compressionQuality: 1) {
 //              multipartFormData.append(imageData, withName: "profile_pic", fileName: "fileNew.png", mimeType: "image/png")
 //            }
 //
 //            for (key, value) in params {
 //                multipartFormData.append((value.data(using: .utf8))!, withName: key)
-//            }}, to: strURL, method: .post, headers: header,
+//            }}, to: strUrl, method: .post, headers: header,
 //                encodingCompletion: { encodingResult in
 //                  switch encodingResult {
 //                  case .success(let upload, _, _):
@@ -581,7 +594,8 @@ extension WebServiceManager {
 //          })
 //
 //
-//        }
+//
+//    }
         
     // //MARK: - upload MultipartData method with 3 images ---
     public func uploadMultipartWithImagesData(strURL:String, params : [String:Any]?,showIndicator:Bool , customValidation:String, imageData:Data?,imageToUpload:[Data],imagesParam:[String], fileName:String?, mimeType:String?, success:@escaping(Dictionary<String,Any>) ->Void, failure:@escaping (Error) ->Void){
@@ -602,19 +616,29 @@ extension WebServiceManager {
             
             strAuthToken =  token //"Bearer" + " " +
         }
-        
+        let boundary = (String.init(format: "Boundary-%@", NSUUID.init().uuidString))
         let header: HTTPHeaders = ["authToken": strAuthToken ,
                                    "Accept": "application/json",
-                                   "Content-Type": "multipart/form-data"]
+                                   "Content-Type": "multipart/form-data; boundary=\(boundary)"]
         print(header)
         print(strURL)
+        
         
         AF.upload(multipartFormData: { (multipartFormData) in
             
             let count = imageToUpload.count
-            for i in 0..<count{
-                multipartFormData.append(imageToUpload[i], withName: "\(imagesParam[i])", fileName: "file\(i).png" , mimeType: "image/png")
+            if count != 0{
+                for i in 0..<count{
+                    multipartFormData.append(imageToUpload[i], withName: "user_image", fileName: "file\(i).png" , mimeType: "image/png")
+                }
+            }else{
+                if imageData != nil{
+                    multipartFormData.append(imageData!, withName: "user_image", fileName: "fileNew.png", mimeType: "image/png")
+                }
+               
             }
+           
+            
             
             for (key, value) in params ?? [:]{
                 multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)

@@ -9,6 +9,7 @@ import UIKit
 
 class HistoryViewController: UIViewController {
 
+    //MARK:- IBoutlets
     @IBOutlet weak var tblHistory: UITableView!
     @IBOutlet weak var vwGetReq: UIView!
     @IBOutlet weak var vwMyreq: UIView!
@@ -19,6 +20,7 @@ class HistoryViewController: UIViewController {
     var userType = ""
     var arrMyRequests = [MyRequestsModel]()
     
+    //MARK:- App Lyf Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,10 +37,19 @@ class HistoryViewController: UIViewController {
         
         self.vwMyreq.layer.cornerRadius = 5
         
-        self.userType = UserDefaults.standard.value(forKey: UserDefaults.Keys.userType)as? String ?? "Male"
-        self.setStyling(strUserType: userType)
+//        self.userType = UserDefaults.standard.value(forKey: UserDefaults.Keys.userType)as? String ?? "Male"
+//        self.setStyling(strUserType: userType)
         
         self.call_WsGetMyrequest(strUserID: objAppShareData.UserDetail.strUserId)
+        
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Do any additional setup after loading the view.
+        self.userType = UserDefaults.standard.value(forKey: UserDefaults.Keys.userType)as? String ?? "Male"
+        self.setStyling(strUserType: userType)
         
     }
     
@@ -58,7 +69,7 @@ class HistoryViewController: UIViewController {
     }
     
 
-   
+    //MARK:- IBAction
     @IBAction func actionBtnBackOnHeader(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -104,7 +115,7 @@ class HistoryViewController: UIViewController {
     }
 }
 
-
+//MARK:- UITableView Delgates and Datasource
 extension HistoryViewController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -120,18 +131,21 @@ extension HistoryViewController: UITableViewDelegate,UITableViewDataSource{
             cell.btnRequest.setTitle(obj.strCategoryName, for: .normal)
             cell.lblTime.text = obj.strDateTime
             
+            let profilePic = obj.strCategoryImage
+            
+            if profilePic != "" {
+                let url = URL(string: profilePic)
+                cell.imgVwUser.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "logo"))
+            }
+            
             return cell
         }else{
             return UITableViewCell()
         }
     }
-    
-    
-    
-    
 }
 
-
+//MARK:- Call Webservice
 extension HistoryViewController{
     func call_WsGetMyrequest(strUserID:String){
         
@@ -142,7 +156,6 @@ extension HistoryViewController{
         }
     
         objWebServiceManager.showIndicator()
-        
         
         let dicrParam = ["user_id":strUserID]as [String:Any]
         

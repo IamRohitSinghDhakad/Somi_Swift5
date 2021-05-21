@@ -11,6 +11,7 @@ import MessageUI
 
 class HomeViewController: UIViewController,MFMessageComposeViewControllerDelegate {
 
+    //MARK:- IBoutlets
     @IBOutlet weak var vwHeaderBg: UIView!
     @IBOutlet weak var imgVwLogo: UIImageView!
     @IBOutlet weak var vwBtnBg: UIView!
@@ -23,25 +24,33 @@ class HomeViewController: UIViewController,MFMessageComposeViewControllerDelegat
     @IBOutlet weak var lblBloodGroup: UILabel!
     @IBOutlet weak var lblAllergies: UILabel!
     
+    //MARK:- Variables
     var locationManager:CLLocationManager!
     var latitude = ""
     var longitude = ""
     var emergenyNumber = ""
     
+    
+    //MARK:- App LyfCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let userType = UserDefaults.standard.value(forKey: UserDefaults.Keys.userType)as? String ?? "Male"
-        self.setStyling(strUserType: userType)
-       
         
+        if objAppShareData.isFromNotification{
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "NotificationViewController")as! NotificationViewController
+            vc.strReqID = objAppShareData.userReqID
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            
+        }
+//        
+//        let userType = UserDefaults.standard.value(forKey: UserDefaults.Keys.userType)as? String ?? "Male"
+//        self.setStyling(strUserType: userType)
         self.subVwBloodGroup.isHidden = true
         self.vwContainerBloodGroup.clipsToBounds = true
         self.vwContainerBloodGroup.layer.cornerRadius = 5
         
-        self.emergenyNumber = objAppShareData.UserDetail.strEmergencyNumber
-        self.btnCall.setTitle("CALL \(emergenyNumber)", for: .normal)
-        self.btnText.setTitle("TEXT \(emergenyNumber)", for: .normal)
     }
+    
     
     func locationSetup(){
         locationManager = CLLocationManager()
@@ -54,9 +63,18 @@ class HomeViewController: UIViewController,MFMessageComposeViewControllerDelegat
             }
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.emergenyNumber = objAppShareData.UserDetail.strEmergencyNumber
+        self.btnCall.setTitle("CALL \(emergenyNumber)", for: .normal)
+        self.btnText.setTitle("TEXT \(emergenyNumber)", for: .normal)
+        
+        let userType = UserDefaults.standard.value(forKey: UserDefaults.Keys.userType)as? String ?? "Male"
+        self.setStyling(strUserType: userType)
         self.locationSetup()
+        
     }
     
     func setStyling(strUserType:String){
@@ -76,6 +94,8 @@ class HomeViewController: UIViewController,MFMessageComposeViewControllerDelegat
         }
     }
     
+    
+    //MARK:- IBAction
     @IBAction func btnGoToReqType(_ sender: Any) {
         
         if self.latitude != "" && self.longitude != "" && self.lblCurrentLocation.text != ""{
@@ -87,14 +107,15 @@ class HomeViewController: UIViewController,MFMessageComposeViewControllerDelegat
         }else{
             objAlert.showAlert(message: "Current Addres not found", title: "Alert", controller: self)
         }
-        
-        
     }
+    
     
     
     @IBAction func actionbtnCall911(_ sender: Any) {
         self.callNumber(phoneNumber: self.emergenyNumber )
     }
+    
+    
     @IBAction func actionBtnText(_ sender: Any) {
         
         if let msg = UserDefaults.standard.string(forKey: "emergency_message"){
@@ -116,8 +137,6 @@ class HomeViewController: UIViewController,MFMessageComposeViewControllerDelegat
         }else{
             objAlert.showAlert(message: "Please set default message first", title: "Alert", controller: self)
         }
-        
-       
     }
     
 //    func configuredMessageComposeViewController() -> MFMessageComposeViewController {
@@ -145,6 +164,7 @@ class HomeViewController: UIViewController,MFMessageComposeViewControllerDelegat
         }
     }
     
+    
     @IBAction func actionbtnOpenSideMenu(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SideMenuViewController")as! SideMenuViewController
         self.navigationController?.pushViewController(vc, animated: true)
@@ -160,7 +180,7 @@ class HomeViewController: UIViewController,MFMessageComposeViewControllerDelegat
 
 }
 
-
+//MARK:- Location Manager
 extension HomeViewController: CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -187,10 +207,10 @@ extension HomeViewController: CLLocationManagerDelegate{
                 print(placemark.administrativeArea!)
                 print(placemark.country!)
 
-               // self.lblCurrentLocation.text = "\(placemark.locality!), \(placemark.administrativeArea!), \(placemark.country!)"
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.lblCurrentLocation.text = "Moscow, Moscow Oblast, Russia"
-                }
+                self.lblCurrentLocation.text = "\(placemark.locality!), \(placemark.administrativeArea!), \(placemark.country!)"
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                    self.lblCurrentLocation.text = "Moscow, Moscow Oblast, Russia"
+//                }
                 
             }
         }

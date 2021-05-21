@@ -10,6 +10,7 @@ import UIKit
 class RequestTypeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imgVwCategory: UIImageView!
+    @IBOutlet var vwContainer: UIView!
     @IBOutlet weak var lblCategory: UILabel!
     
     

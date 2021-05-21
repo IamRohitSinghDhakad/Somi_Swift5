@@ -12,6 +12,11 @@ let objAppShareData : AppSharedData  = AppSharedData.sharedObject()
 
 
 class AppSharedData: NSObject {
+    
+    var strFirebaseToken = ""
+    var isFromNotification = Bool()
+    var isNotificationDict = [String:Any]()
+    var userReqID = ""
 
     //MARK: - Shared object
     

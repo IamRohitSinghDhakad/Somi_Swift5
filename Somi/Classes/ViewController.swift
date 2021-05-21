@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    //MARK:- IBOutlets
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
@@ -17,14 +18,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var vwBynBg: UIView!
     
     
+    //MARK:- App Lyf Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tfEmail.delegate = self
         self.tfPassword.delegate = self
-        
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let userType = UserDefaults.standard.value(forKey: UserDefaults.Keys.userType)as? String ?? "Male"
         self.setStyling(strUserType: userType)
-        // Do any additional setup after loading the view.
     }
     
     func setStyling(strUserType:String){
@@ -37,9 +41,10 @@ class ViewController: UIViewController {
     }
 
 
+    //MARK:- IBAction Buttons
     @IBAction func actionBtnLogin(_ sender: Any) {
-       // self.validateForSignUp()
-        self.call_WsLogin()
+        self.validateForSignUp()
+      //  self.call_WsLogin()
     }
     @IBAction func actionBtnForgotPassword(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ForgotPasswordViewController")as! ForgotPasswordViewController
@@ -70,6 +75,7 @@ class ViewController: UIViewController {
     
 }
 
+//MARK:- UITextFieldDelegates
 extension ViewController : UITextFieldDelegate{
     // TextField delegate method
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -84,7 +90,7 @@ extension ViewController : UITextFieldDelegate{
     }
 }
 
-//MARK:- Call Webservice
+//MARK:- Call Webservice Login
 extension ViewController{
     func call_WsLogin(){
         
@@ -98,8 +104,9 @@ extension ViewController{
         
         let dicrParam = ["username":self.tfEmail.text!,
                          "password":self.tfPassword.text!,
-                         "type":"user"]as [String:Any]
-        
+                         "type":"user",
+                         "ios_register_id":objAppShareData.strFirebaseToken]as [String:Any]
+        print(dicrParam)
         objWebServiceManager.requestGet(strURL: WsUrl.url_Login, params: dicrParam, queryParams: [:], strCustomValidation: "") { (response) in
             objWebServiceManager.hideIndicator()
             let status = (response["status"] as? Int)
@@ -131,6 +138,7 @@ extension ViewController{
    }
 }
 
+//MARK:- Pop Up Extension 
 extension UIViewController{
     func show() {
         let window = UIApplication.shared.delegate?.window

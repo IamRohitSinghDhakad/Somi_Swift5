@@ -9,6 +9,7 @@ import UIKit
 
 class AddContactsViewController: UIViewController {
 
+    //MARK:- IBOutlets
     @IBOutlet weak var tblAddContacts: UITableView!
     @IBOutlet weak var vwBtnBg: UIView!
     
@@ -17,14 +18,15 @@ class AddContactsViewController: UIViewController {
     var userTypeCheck = ""
     var userID = ""
     
+    //MARK:- App Lyf Cycyle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tblAddContacts.delegate = self
         self.tblAddContacts.dataSource = self
         
-        let userType = UserDefaults.standard.value(forKey: UserDefaults.Keys.userType)as? String ?? "Male"
-        self.setStyling(strUserType: userType)
+//        let userType = UserDefaults.standard.value(forKey: UserDefaults.Keys.userType)as? String ?? "Male"
+//        self.setStyling(strUserType: userType)
         
         userID  = objAppShareData.UserDetail.strUserId
        if userID != ""{
@@ -32,6 +34,14 @@ class AddContactsViewController: UIViewController {
        }
         
         userTypeCheck = UserDefaults.standard.value(forKey: UserDefaults.Keys.userType)as? String ?? "Male"
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Do any additional setup after loading the view.
+        let userType = UserDefaults.standard.value(forKey: UserDefaults.Keys.userType)as? String ?? "Male"
+        self.setStyling(strUserType: userType)
         
     }
     
@@ -55,7 +65,7 @@ class AddContactsViewController: UIViewController {
 
 }
 
-
+//MARK:- UITableView Delgates and DataSorce
 extension AddContactsViewController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -126,7 +136,7 @@ extension AddContactsViewController: UITableViewDelegate,UITableViewDataSource{
 }
 
 
-//MARK:- Call Webservice
+//MARK:- Call Webservice Contact List
 extension AddContactsViewController{
     func call_WsGetContactList(strUserID:String){
         
@@ -212,10 +222,10 @@ extension AddContactsViewController{
     
 }
 
+
 extension UIImageView {
 
     func makeCircleImage() {
-
         self.layer.borderWidth = 0
         self.layer.masksToBounds = false
         self.layer.borderColor = UIColor.black.cgColor

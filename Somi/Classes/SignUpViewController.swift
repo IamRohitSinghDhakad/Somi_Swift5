@@ -7,9 +7,11 @@
 
 import UIKit
 import Alamofire
+import SystemConfiguration
 
 class SignUpViewController: UIViewController, UINavigationControllerDelegate {
 
+    //MARK:- IBOutlets
     @IBOutlet weak var imgVwUser: UIImageView!
     @IBOutlet weak var tfUserName: UITextField!
     @IBOutlet weak var tfEmail: UITextField!
@@ -22,11 +24,12 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var tfEnterAllergy: UITextField!
     @IBOutlet weak var tfEmergencyNumber: UITextField!
     
-    
+    //MARK:- Variables
     var imagePicker = UIImagePickerController()
     var pickedImage:UIImage?
     var userType = "Male"
     
+    //MARK:- App Lyf Cycyle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,6 +44,8 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate {
         // Do any additional setup after loading the view.
     }
     
+    
+    //MARK:- Button Actions
     @IBAction func actionBtnMale(_ sender: Any) {
         
         self.imgVwMale.image = #imageLiteral(resourceName: "blue")
@@ -50,6 +55,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate {
         self.vwSignUpBg.backgroundColor = UIColor.init(named: "appBlueColor")
         
     }
+
     @IBAction func actionBtnFemale(_ sender: Any) {
         self.imgVwMale.image = #imageLiteral(resourceName: "uncheck")
         self.imgVeFemale.image = #imageLiteral(resourceName: "check")
@@ -107,13 +113,15 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate {
             objAlert.showAlert(message: "Please enter emergency number", title:MessageConstant.k_AlertTitle, controller: self)
         }
         else{
-            self.callWebserviceForUploadUserImage()
+           self.callWebserviceForUploadUserImage()
+           // self.myImageUploadRequest()
         }
     }
     
 
 }
 
+//MARK:- UITextFiled Delegates
 extension SignUpViewController : UITextFieldDelegate{
     // TextField delegate method
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -145,6 +153,7 @@ extension SignUpViewController : UITextFieldDelegate{
         return true
     }
 }
+
 
 extension SignUpViewController: UIImagePickerControllerDelegate{
     
@@ -249,7 +258,7 @@ extension SignUpViewController: UIImagePickerControllerDelegate{
     
 }
 
-
+//MARK:- CallWebservice
 extension SignUpViewController{
     
     func callWebserviceForUploadUserImage(){
@@ -276,8 +285,9 @@ extension SignUpViewController{
                          "type":"user",
                          "blood_group":self.tfEnterBloodGroup.text!,
                          "allergy":self.tfEnterAllergy.text!,
-                         "emergency_number":self.tfEmergencyNumber.text,
-                         "sex":self.userType]as [String:Any]
+                         "emergency_number":self.tfEmergencyNumber.text!,
+                         "sex":self.userType,
+                         "ios_register_id":objAppShareData.strFirebaseToken]as [String:Any]
         
         objWebServiceManager.uploadMultipartWithImagesData(strURL: WsUrl.url_SignUp, params: dicrParam, showIndicator: true, customValidation: "", imageData: imageData, imageToUpload: [], imagesParam: [], fileName: "user_image", mimeType: "image/jpeg") { (response) in
             objWebServiceManager.hideIndicator()
@@ -304,4 +314,193 @@ extension SignUpViewController{
         }
     }
     
+    
+    
+//    func myImageUploadRequest() {
+//
+//        let myUrl = NSURL(string: WsUrl.url_SignUp);
+//        let request = NSMutableURLRequest(url:myUrl! as URL);
+//        request.httpMethod = "POST";
+//
+//        let param = [
+//            "name":self.tfUserName.text!,
+//            "email":self.tfEmail.text!,
+//            "mobile":self.tfPhoneNumber.text!,
+//            "password":self.tfPassword.text!,
+//            "type":"user",
+//            "blood_group":self.tfEnterBloodGroup.text!,
+//            "allergy":self.tfEnterAllergy.text!,
+//            "emergency_number":self.tfEmergencyNumber.text,
+//            "sex":self.userType,
+//            "ios_register_id":objAppShareData.strFirebaseToken
+//        ] as [String : String]
+//
+//        let boundary = generateBoundaryString()
+//        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+//
+//        var imageData : Data?
+//        if self.pickedImage != nil{
+//            imageData = (self.pickedImage?.jpegData(compressionQuality: 1.0))!
+//        }
+//
+//        request.httpBody = createBodyWithParameters(parameters: param, filePathKey: "file", imageDataKey: imageData! as NSData, boundary: boundary, imgKey: "user_image") as Data
+//
+//        let task = URLSession.shared.dataTask(with: request as URLRequest) {
+//            data, response, error in
+//
+//                if error != nil {
+//                    print("error=\(error!)")
+//                    return
+//                }
+//
+//                //print response
+//                //print("response = \(response!)")
+//
+//                // print reponse body
+//                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+//                print("response data = \(responseString!)")
+//
+//            }
+//
+//            task.resume()
+//        }
+
+
+
+
+//    func createBodyWithParameters(parameters: [String: String]?, filePathKey: String?, imageDataKey: NSData, boundary: String, imgKey: String) -> NSData {
+//            let body = NSMutableData();
+//
+//            if parameters != nil {
+//                for (key, value) in parameters! {
+//                    body.appendString(string: "--\(boundary)\r\n")
+//                    body.appendString(string: "Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
+//                    body.appendString(string: "\(value)\r\n")
+//                }
+//            }
+//
+//            let filename = "\(imgKey).jpg"
+//            let mimetype = "image/jpg"
+//
+//            body.appendString(string: "--\(boundary)\r\n")
+//            body.appendString(string: "Content-Disposition: form-data; name=\"\(filePathKey!)\"; filename=\"\(filename)\"\r\n")
+//            body.appendString(string: "Content-Type: \(mimetype)\r\n\r\n")
+//            body.append(imageDataKey as Data)
+//            body.appendString(string: "\r\n")
+//            body.appendString(string: "--\(boundary)--\r\n")
+//
+//            return body
+//        }
+//
+//        func generateBoundaryString() -> String {
+//            return "Boundary-\(NSUUID().uuidString)"
+//        }
+
+
+//    func apiCall(){
+//      
+//
+//        var semaphore = DispatchSemaphore (value: 0)
+//
+//        let parameters = [
+//          [
+//            "key": "name",
+//            "value": "Test",
+//            "type": "text"
+//          ],
+//          [
+//            "key": "email",
+//            "value": "test@gmail.com",
+//            "type": "text"
+//          ],
+//          [
+//            "key": "mobile",
+//            "value": "1234567890",
+//            "type": "text"
+//          ],
+//          [
+//            "key": "password",
+//            "value": "1234",
+//            "type": "text"
+//          ],
+//          [
+//            "key": "type",
+//            "value": "user",
+//            "type": "text"
+//          ],
+//          [
+//            "key": "sex",
+//            "value": "Male",
+//            "type": "text"
+//          ],
+//          [
+//            "key": "user_image",
+//            "src": "/Users/rohit/Downloads/SOS app/cropping/02/back.png",
+//            "type": "file"
+//          ],
+//          [
+//            "key": "blood_group",
+//            "value": "A+",
+//            "type": "text"
+//          ],
+//          [
+//            "key": "allergy",
+//            "value": "NO",
+//            "type": "text"
+//          ]] as [[String : Any]]
+//
+//        let boundary = "Boundary-\(UUID().uuidString)"
+//        var body = ""
+//        var error: Error? = nil
+//        for param in parameters {
+//          if param["disabled"] == nil {
+//            let paramName = param["key"]!
+//            body += "--\(boundary)\r\n"
+//            body += "Content-Disposition:form-data; name=\"\(paramName)\""
+//            let paramType = param["type"] as! String
+//            if paramType == "text" {
+//              let paramValue = param["value"] as! String
+//              body += "\r\n\r\n\(paramValue)\r\n"
+//            } else {
+//              let paramSrc = param["src"] as! String
+//              let fileData = try NSData(contentsOfFile:paramSrc, options:[]) as Data
+//              let fileContent = String(data: fileData, encoding: .utf8)!
+//              body += "; filename=\"\(paramSrc)\"\r\n"
+//                + "Content-Type: \"content-type header\"\r\n\r\n\(fileContent)\r\n"
+//            }
+//          }
+//        }
+//        body += "--\(boundary)--\r\n";
+//        let postData = body.data(using: .utf8)
+//
+//        var request = URLRequest(url: URL(string: WsUrl.url_SignUp)!,timeoutInterval: Double.infinity)
+//        request.addValue("ci_session=dd7bec4a91613ddbc439fc049461529e97f922df", forHTTPHeaderField: "Cookie")
+//        request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+//
+//        request.httpMethod = "POST"
+//        request.httpBody = postData
+//
+//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+//          guard let data = data else {
+//            print(String(describing: error))
+//            semaphore.signal()
+//            return
+//          }
+//          print(String(data: data, encoding: .utf8)!)
+//          semaphore.signal()
+//        }
+//
+//        task.resume()
+//        semaphore.wait()
+//
+//    }
+    
+   }
+
+extension NSMutableData {
+    func appendString(string: String) {
+        let data = string.data(using: String.Encoding.utf8, allowLossyConversion: true)
+        append(data!)
+    }
 }
+

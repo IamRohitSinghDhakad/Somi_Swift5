@@ -10,6 +10,7 @@ import Alamofire
 
 class EditProfileViewController: UIViewController {
 
+    //MARK:- IBOutlet
     @IBOutlet weak var vwBtnBg: UIView!
     @IBOutlet weak var VwHeaderBg: UIView!
     @IBOutlet weak var imgVwUser: UIImageView!
@@ -18,12 +19,20 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var tfBloodGroup: UITextField!
     @IBOutlet weak var tfAllergy: UITextField!
     @IBOutlet weak var tfAddress: UITextField!
+    @IBOutlet var btnMale: UIButton!
+    @IBOutlet var btnFemale: UIButton!
+    @IBOutlet var imgVwMale: UIImageView!
+    @IBOutlet var imgVwFemale: UIImageView!
+    @IBOutlet var imgVwEditProfile: UIImageView!
+    @IBOutlet var tfEmergencyNumber: UITextField!
     
+    //MARK:- Variables
     var dictUserData = [String:Any]()
-    
     var imagePicker = UIImagePickerController()
     var pickedImage:UIImage?
+    var strUserType = ""
     
+    //MARK:- App Lyf Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,6 +53,14 @@ class EditProfileViewController: UIViewController {
         self.tfBloodGroup.text = (dictUserData["blood"] as! String)
         self.tfAllergy.text = (dictUserData["allergy"] as! String)
         self.tfAddress.text = (dictUserData["address"] as! String)
+        self.tfEmergencyNumber.text = (dictUserData["emergency_number"] as! String)
+        
+        if let profilePic = dictUserData["user_image"] as? String{
+            if profilePic != "" {
+                let url = URL(string: profilePic)
+                self.imgVwUser.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "img"))
+            }
+        }
     }
     
     func setStyling(strUserType:String){
@@ -51,12 +68,43 @@ class EditProfileViewController: UIViewController {
             self.VwHeaderBg.backgroundColor = UIColor.init(named: "appBlueColor")
             self.vwBtnBg.backgroundColor = UIColor.init(named: "appBlueColor")
             self.view.backgroundColor = UIColor.init(named: "appBlueColor")
+            self.imgVwEditProfile.image = #imageLiteral(resourceName: "edit_profile_icon")
+            self.imgVwMale.image = #imageLiteral(resourceName: "blue")
+            self.imgVwFemale.image = #imageLiteral(resourceName: "pink")
         }else{
             self.VwHeaderBg.backgroundColor = UIColor.init(named: "appPinkColor")
             self.vwBtnBg.backgroundColor = UIColor.init(named: "appPinkColor")
             self.view.backgroundColor = UIColor.init(named: "appPinkColor")
+            self.imgVwEditProfile.image = #imageLiteral(resourceName: "edit_pink")
+            self.imgVwMale.image = #imageLiteral(resourceName: "uncheck")
+            self.imgVwFemale.image = #imageLiteral(resourceName: "check")
         }
     }
+    
+    //MARK:- IBAction
+    @IBAction func btnMale(_ sender: Any) {
+        self.imgVwMale.image = #imageLiteral(resourceName: "blue")
+        self.imgVwFemale.image = #imageLiteral(resourceName: "pink")
+        self.strUserType = "Male"
+        self.imgVwEditProfile.image = #imageLiteral(resourceName: "edit_profile_icon")
+        
+        self.VwHeaderBg.backgroundColor = UIColor.init(named: "appBlueColor")
+        self.vwBtnBg.backgroundColor = UIColor.init(named: "appBlueColor")
+        self.view.backgroundColor = UIColor.init(named: "appBlueColor")
+        
+    }
+    @IBAction func btnFemale(_ sender: Any) {
+        self.imgVwMale.image = #imageLiteral(resourceName: "uncheck")
+        self.imgVwFemale.image = #imageLiteral(resourceName: "check")
+        self.strUserType = "Female"
+       
+        self.imgVwEditProfile.image = #imageLiteral(resourceName: "edit_pink")
+        self.VwHeaderBg.backgroundColor = UIColor.init(named: "appPinkColor")
+        self.vwBtnBg.backgroundColor = UIColor.init(named: "appPinkColor")
+        self.view.backgroundColor = UIColor.init(named: "appPinkColor")
+    }
+    
+    
     @IBAction func btnOpencamera(_ sender: Any) {
         self.setImage()
     }
@@ -67,30 +115,12 @@ class EditProfileViewController: UIViewController {
     
   
     @IBAction func actionBtnSave(_ sender: Any) {
+        self.validateForSignUp()
         
-        
-        var imageData : Data?
-        if self.pickedImage != nil{
-            imageData = (self.pickedImage?.jpegData(compressionQuality: 1.0))!
-        }
-        
-        let dicrParam = ["email":self.tfEmail.text!,
-                         "mobile":self.tfPhoneNumber.text!,
-                         "type":"user",
-                         "blood_group":self.tfBloodGroup.text!,
-                         "allergy":self.tfAllergy.text!,
-                         "address":self.tfAddress.text!,
-                         "user_id":objAppShareData.UserDetail.strUserId]as [String:Any]
-        
-        print(imageData, dicrParam, WsUrl.url_completeProfile)
-        
-        self.uploadImage(endUrl: WsUrl.url_completeProfile, imageData: imageData, parameters: dicrParam)
-        
-       // self.callWebserviceUpdateProfile()
     }
-    
 }
 
+//MARK:- UItextField Delegates and Datasorce
 extension EditProfileViewController : UITextFieldDelegate{
     // TextField delegate method
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -117,8 +147,41 @@ extension EditProfileViewController : UITextFieldDelegate{
         }
         return true
     }
+    
+    
+    //MARK:- All Validations
+    func validateForSignUp(){
+        self.tfPhoneNumber.text = self.tfPhoneNumber.text!.trim()
+        self.tfEmail.text = self.tfEmail.text!.trim()
+        self.tfBloodGroup.text = self.tfBloodGroup.text!.trim()
+        self.tfAllergy.text = self.tfAllergy.text!.trim()
+        self.tfPhoneNumber.text = self.tfPhoneNumber.text!.trim()
+        self.tfAddress.text = self.tfAddress.text!.trim()
+        //
+         if (tfEmail.text?.isEmpty)! {
+            objAlert.showAlert(message: MessageConstant.BlankEmail, title:MessageConstant.k_AlertTitle, controller: self)
+        }else if !objValidationManager.validateEmail(with: tfEmail.text!){
+            objAlert.showAlert(message: MessageConstant.ValidEmail, title:MessageConstant.k_AlertTitle, controller: self)
+        }
+        else  if (tfPhoneNumber.text?.isEmpty)! {
+            objAlert.showAlert(message: MessageConstant.BlankPhoneNo, title:MessageConstant.k_AlertTitle, controller: self)
+        }
+        else if (tfBloodGroup.text?.isEmpty)! {
+            objAlert.showAlert(message: "Please enter blood group", title:MessageConstant.k_AlertTitle, controller: self)
+        }
+        else if (tfAllergy.text?.isEmpty)! {
+            objAlert.showAlert(message: "Please enter Allergy", title:MessageConstant.k_AlertTitle, controller: self)
+        }
+        else if (tfAddress.text?.isEmpty)! {
+            objAlert.showAlert(message: "Please enter address", title:MessageConstant.k_AlertTitle, controller: self)
+        }
+        else{
+            self.callWebserviceUpdateProfile()
+        }
+    }
 }
 
+//MARK:- UIImagePicker
 extension EditProfileViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     
     // MARK:- UIImage Picker Delegate
@@ -222,10 +285,8 @@ extension EditProfileViewController: UIImagePickerControllerDelegate,UINavigatio
     
 }
 
-
+//MARK:- Upload Image Functions
 extension EditProfileViewController{
-    
-    
     
     func uploadImage(endUrl: String, imageData: Data?, parameters: [String : Any], onCompletion: ((_ isSuccess:Bool) -> Void)? = nil, onError: ((Error?) -> Void)? = nil){
        
@@ -283,6 +344,8 @@ extension EditProfileViewController{
             })
       }
     
+    
+    //MARK:- Call WebService Upload Profile
     func callWebserviceUpdateProfile(){
         
         if !objWebServiceManager.isNetworkAvailable(){
@@ -304,7 +367,9 @@ extension EditProfileViewController{
                          "blood_group":self.tfBloodGroup.text!,
                          "allergy":self.tfAllergy.text!,
                          "address":self.tfAddress.text!,
-                         "user_id":objAppShareData.UserDetail.strUserId]as [String:Any]
+                         "user_id":objAppShareData.UserDetail.strUserId,
+                         "emergency_number":self.tfEmergencyNumber.text!,
+                         "sex":self.strUserType]as [String:Any]
         
         objWebServiceManager.uploadMultipartWithImagesData(strURL: WsUrl.url_completeProfile, params: dicrParam, showIndicator: true, customValidation: "", imageData: imageData, imageToUpload: [], imagesParam: [], fileName: "user_image", mimeType: "image/jpeg") { (response) in
             objWebServiceManager.hideIndicator()
@@ -315,7 +380,11 @@ extension EditProfileViewController{
             if status == MessageConstant.k_StatusCode{
             
                 let user_details  = response["result"] as? [String:Any]
-
+                if user_details?["sex"] as! String == "Male"{
+                    UserDefaults.standard.setValue("Male", forKey: UserDefaults.Keys.userType)
+                }else{
+                    UserDefaults.standard.setValue("Female", forKey: UserDefaults.Keys.userType)
+                }
                 objAppShareData.SaveUpdateUserInfoFromAppshareData(userDetail: user_details ?? [:])
                 objAppShareData.fetchUserInfoFromAppshareData()
                 

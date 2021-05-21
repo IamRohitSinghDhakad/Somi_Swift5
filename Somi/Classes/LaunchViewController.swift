@@ -18,9 +18,18 @@ class LaunchViewController: UIViewController {
             let vc  = self.storyboard?.instantiateViewController(withIdentifier: "ViewController")as! ViewController
             self.navigationController?.pushViewController(vc, animated: true)
         }
+//        let userType = UserDefaults.standard.value(forKey: UserDefaults.Keys.userType)as? String ?? "Male"
+//        self.setStyling(strUserType: userType)
+        // Do any additional setup after loading the view.
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Do any additional setup after loading the view.
         let userType = UserDefaults.standard.value(forKey: UserDefaults.Keys.userType)as? String ?? "Male"
         self.setStyling(strUserType: userType)
-        // Do any additional setup after loading the view.
+        
     }
     
     func setStyling(strUserType:String){

@@ -14,6 +14,7 @@ class ContactsTableViewCell: UITableViewCell {
     @IBOutlet weak var imgVwUser: UIImageView!
     @IBOutlet weak var lblUserName: UILabel!
     @IBOutlet weak var lblPhoneNumber: UILabel!
+    @IBOutlet var btnSave: UIButton!
     
     
     override func awakeFromNib() {

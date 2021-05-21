@@ -43,9 +43,9 @@ class GetContactsModel: NSObject {
             self.strUserContactID = "\(userID)"
         }
         
-        if let userID = dict["user_contact_id"] as? String{
+        if let userID = dict["contact_id"] as? String{
             self.strUserIDForDelete = userID
-        }else  if let userID = dict["user_contact_id"] as? Int{
+        }else  if let userID = dict["contact_id"] as? Int{
             self.strUserIDForDelete = "\(userID)"
         }
         
