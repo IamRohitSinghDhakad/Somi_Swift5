@@ -14,10 +14,12 @@ class RequestTypeViewController: UIViewController {
     @IBOutlet weak var cvRequestType: UICollectionView!
     @IBOutlet weak var vwHeaderBg: UIView!
     @IBOutlet weak var vwBtnBg: UIView!
+    @IBOutlet var subVw: UIView!
     
     var strLatitude = ""
     var strLongitude = ""
     var strAddress = ""
+    var strSelectedReqType = ""
     var strSelectedCategoryID = ""
     var selectedIndex = -1
     var userType = ""
@@ -28,6 +30,8 @@ class RequestTypeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.subVw.isHidden = true
+        
         self.cvRequestType.delegate = self
         self.cvRequestType.dataSource = self
         
@@ -54,13 +58,30 @@ class RequestTypeViewController: UIViewController {
             self.view.backgroundColor = UIColor.init(named: "appPinkColor")
         }
     }
-
+   
+    @IBAction func btnCloseSubVw(_ sender: Any) {
+        self.subVw.isHidden = true
+    }
+    
+    @IBAction func btnSendSomiUser(_ sender: Any) {
+        self.call_WsSendRequest(strCategoryID: strSelectedCategoryID)
+    }
+    
+    @IBAction func btnSendNormalUser(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SelectUserViewController")as! SelectUserViewController
+        vc.strReqType = strSelectedReqType
+        vc.lat = self.strLatitude
+        vc.long = self.strLongitude
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     //MARK:- IBActions
     @IBAction func actionBtnSend(_ sender: Any) {
         if self.selectedIndex == -1{
             objAlert.showAlert(message: "Please select request type first.", title: "Alert", controller: self)
         }else{
-            self.call_WsSendRequest(strCategoryID: strSelectedCategoryID)
+            self.subVw.isHidden = false
+           // self.call_WsSendRequest(strCategoryID: strSelectedCategoryID)
         }
         
         
@@ -116,6 +137,9 @@ extension RequestTypeViewController: UICollectionViewDelegate,UICollectionViewDa
         self.selectedIndex = indexPath.row
         let obj = self.arrData[indexPath.row]
         self.strSelectedCategoryID = obj.strCategoryID
+        
+        self.strSelectedReqType = obj.strCategoryName
+        
         self.cvRequestType.reloadData()
     }
     

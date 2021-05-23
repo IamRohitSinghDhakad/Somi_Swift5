@@ -52,34 +52,34 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "9EFE82DE-07E5-4D3E-8209-AF74790F2E20 - dda6fd74658c65a5"
+                  uuid = "9EFE82DE-07E5-4D3E-8209-AF74790F2E20 - a9d2a64fa72cb5c0"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Somi.SignUpViewController.callWebserviceForUploadUserImage() -&gt; ()"
                   moduleName = "Somi"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi/Somi/Classes/SignUpViewController.swift"
+                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi_Swift/Somi/Classes/SignUpViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "285"
-                  endingLineNumber = "285"
-                  offsetFromSymbolStart = "6667">
+                  startingLineNumber = "292"
+                  endingLineNumber = "292"
+                  offsetFromSymbolStart = "5860">
                </Location>
                <Location
-                  uuid = "9EFE82DE-07E5-4D3E-8209-AF74790F2E20 - edd3a31a36e474d4"
+                  uuid = "9EFE82DE-07E5-4D3E-8209-AF74790F2E20 - 99a7f821f444a473"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; () in Somi.SignUpViewController.callWebserviceForUploadUserImage() -&gt; ()"
                   moduleName = "Somi"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi/Somi/Classes/SignUpViewController.swift"
+                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi_Swift/Somi/Classes/SignUpViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "286"
-                  endingLineNumber = "286"
-                  offsetFromSymbolStart = "216">
+                  startingLineNumber = "293"
+                  endingLineNumber = "293"
+                  offsetFromSymbolStart = "72">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -110,8 +110,8 @@
             filePath = "Somi/Classes/SideMenuViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "call_WSLogout(strUserID:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -164,34 +164,34 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "B7D3F40F-7D0C-4A90-84A9-D11556174A10 - 5ae29b3ab5939f47"
+                  uuid = "B7D3F40F-7D0C-4A90-84A9-D11556174A10 - df281b3a224ac3c9"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Somi.ViewController.call_WsLogin() -&gt; ()"
                   moduleName = "Somi"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi/Somi/Classes/ViewController.swift"
+                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi_Swift/Somi/Classes/ViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "106"
-                  endingLineNumber = "106"
-                  offsetFromSymbolStart = "2428">
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "1976">
                </Location>
                <Location
-                  uuid = "B7D3F40F-7D0C-4A90-84A9-D11556174A10 - 9ef71b5e888a5065"
+                  uuid = "B7D3F40F-7D0C-4A90-84A9-D11556174A10 - 1b3d9b5e1f530def"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; () in Somi.ViewController.call_WsLogin() -&gt; ()"
                   moduleName = "Somi"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi/Somi/Classes/ViewController.swift"
+                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi_Swift/Somi/Classes/ViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "107"
-                  endingLineNumber = "107"
-                  offsetFromSymbolStart = "188">
+                  startingLineNumber = "111"
+                  endingLineNumber = "111"
+                  offsetFromSymbolStart = "120">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -260,34 +260,34 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "B4D1ECB1-BEFC-44D5-9887-84EC5B382D45 - bfa9bcdf5edeb210"
+                  uuid = "B4D1ECB1-BEFC-44D5-9887-84EC5B382D45 - b1120bf1360bc46d"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; () in Somi.MembershipViewController.call_SubscribePlan(strUserID: Swift.String, strPlanID: Swift.String) -&gt; ()"
                   moduleName = "Somi"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi/Somi/Classes/MembershipViewController.swift"
+                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi_Swift/Somi/Classes/MembershipViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "234"
                   endingLineNumber = "234"
-                  offsetFromSymbolStart = "1023">
+                  offsetFromSymbolStart = "832">
                </Location>
                <Location
-                  uuid = "B4D1ECB1-BEFC-44D5-9887-84EC5B382D45 - 71e1ffb15bcdc16f"
+                  uuid = "B4D1ECB1-BEFC-44D5-9887-84EC5B382D45 - 7f5a489f3318b750"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; () in Somi.MembershipViewController.call_SubscribePlan(strUserID: Swift.String, strPlanID: Swift.String) -&gt; ()"
                   moduleName = "Somi"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi/Somi/Classes/MembershipViewController.swift"
+                  urlString = "file:///Users/rohit/Rohit&apos;s%20WorkSpace/Freelance/Somi_Swift/Somi/Classes/MembershipViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "235"
                   endingLineNumber = "235"
-                  offsetFromSymbolStart = "26">
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
          </BreakpointContent>

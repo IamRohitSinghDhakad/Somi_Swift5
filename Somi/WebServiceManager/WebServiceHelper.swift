@@ -32,6 +32,10 @@ struct WsUrl{
     static let url_GetPlans = BASE_URL + "get_plans"
     static let url_Logout = BASE_URL + "logout?"
     static let url_SubscribePlan = BASE_URL + "subscribe_plan?"
+    
+    static let url_GetMyContact = BASE_URL + "get_my_contact"
+    static let url_AddMyContact = BASE_URL + "add_my_contact?"
+    
 }
 
 //Api Header

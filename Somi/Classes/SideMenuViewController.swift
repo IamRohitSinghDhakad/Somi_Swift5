@@ -114,6 +114,9 @@ class SideMenuViewController: UIViewController {
         case 7:
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "MembershipViewController")as! MembershipViewController
             self.navigationController?.pushViewController(vc, animated: true)
+        case 8:
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "PhoneContactListViewController")as! PhoneContactListViewController
+            self.navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }
