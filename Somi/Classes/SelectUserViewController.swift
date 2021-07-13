@@ -85,10 +85,12 @@ extension SelectUserViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let obj = self.arrUsers[indexPath.row]
 
-        let urlString = "Please Help me My Request is \(strReqType) and my location is latitude:\(self.lat)&longitude:\(self.long)"
+       // let url = URL(string: "comgooglemaps-x-callback://?saddr=&daddr=\(self.la),\(longDouble)&directionsmode=driving")
+        
+        let urlString = "Please Help me My Request is \(strReqType) and my location is https://www.google.com/maps/place/\(self.lat),\(self.long)"
         let urlStringEncoded = urlString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
         
-        self.openWhatsApp(strPhoneNumber: obj.strMobile, strMessage: urlStringEncoded)
+        self.openWhatsApp(strPhoneNumber:obj.strMobile, strMessage: urlStringEncoded)
         
         
     }

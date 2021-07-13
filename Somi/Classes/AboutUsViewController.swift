@@ -48,9 +48,11 @@ class AboutUsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
     @IBAction func btnBackOnHeader(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
 }
 
 extension AboutUsViewController: WKNavigationDelegate{
@@ -64,6 +66,4 @@ extension AboutUsViewController: WKNavigationDelegate{
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
             print("finish to load")
         }
-        
-        
-    }
+}

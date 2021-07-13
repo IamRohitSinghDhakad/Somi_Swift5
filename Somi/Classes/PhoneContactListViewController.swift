@@ -17,10 +17,10 @@ enum ContactsFilter {
 
 class PhoneContactListViewController: UIViewController {
     
-    
+    @IBOutlet var tfSearch: UITextField!
     @IBOutlet var tblVw: UITableView!
     @IBOutlet var vwBgHeader: UIView!
-    
+    @IBOutlet var vwSearchBarBorder: UIView!
     
     var userType = ""
     
@@ -34,6 +34,15 @@ class PhoneContactListViewController: UIViewController {
         
         self.tblVw.delegate = self
         self.tblVw.dataSource = self
+        self.tfSearch.delegate = self
+        
+        vwSearchBarBorder.layer.masksToBounds = false
+        vwSearchBarBorder.cornerRadius = 5
+        vwSearchBarBorder.layer.borderWidth = 1
+        vwSearchBarBorder.layer.borderColor = UIColor.lightGray.cgColor
+        
+        
+        self.tfSearch.addTarget(self, action: #selector(searchContactAsPerText(_ :)), for: .editingChanged)
         
         self.call_WsGetContactList(strUserID: objAppShareData.UserDetail.strUserId)
         
@@ -70,6 +79,33 @@ class PhoneContactListViewController: UIViewController {
     @IBAction func btnSideZMenu(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+}
+
+
+//MARK:- Searching
+extension PhoneContactListViewController:UITextFieldDelegate{
+    
+    @objc func searchContactAsPerText(_ textfield:UITextField) {
+        self.arrPhoneContactsFiltered.removeAll()
+        if textfield.text?.count != 0 {
+            for dicData in self.arrPhoneContacts {
+                let isMachingWorker : NSString = (dicData.name ?? "") as NSString
+                let range = isMachingWorker.lowercased.range(of: textfield.text!, options: NSString.CompareOptions.caseInsensitive, range: nil,   locale: nil)
+                if range != nil {
+                    arrPhoneContactsFiltered.append(dicData)
+                }
+            }
+        } else {
+            self.arrPhoneContactsFiltered = self.arrPhoneContacts
+        }
+        if self.arrPhoneContactsFiltered.count == 0{
+            self.tblVw.displayBackgroundText(text: "No Record Found")
+        }else{
+            self.tblVw.displayBackgroundText(text: "")
+        }
+       // self.arrPhoneContactsFiltered = self.arrPhoneContactsFiltered.sorted(by: { $0.sort > $1.sort})
+        self.tblVw.reloadData()
+    }
     
     
 }
@@ -78,16 +114,21 @@ class PhoneContactListViewController: UIViewController {
 extension PhoneContactListViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.arrPhoneContacts.count
+        return self.arrPhoneContactsFiltered.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsTableViewCell")as! ContactsTableViewCell
         
-        let obj = self.arrPhoneContacts[indexPath.row]
+        let obj = self.arrPhoneContactsFiltered[indexPath.row]
         
         cell.lblUserName.text = obj.name
-        cell.lblPhoneNumber.text = obj.phoneNumber[0]
+        
+        if obj.phoneNumber.count > 0{
+            cell.lblPhoneNumber.text = obj.phoneNumber[0]
+        }else{
+            cell.lblPhoneNumber.text = "N/A"
+        }
         
         //Set Contact Image
         let imageData = obj.avatarData
@@ -126,9 +167,9 @@ extension PhoneContactListViewController:UITableViewDelegate,UITableViewDataSour
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let obj = self.arrPhoneContacts[indexPath.row]
+        let obj = self.arrPhoneContactsFiltered[indexPath.row]
         
-        if obj.name != "" && obj.phoneNumber[0] != ""{
+        if obj.name != "" && obj.phoneNumber.count > 0{
             self.call_WsGetAddContactInList(strUserID: objAppShareData.UserDetail.strUserId, strName: obj.name!, strPhoneNumber: obj.phoneNumber[0], strIndexPath: indexPath.row)
         }else{
             objAlert.showAlert(message: "Details not Found", title: "Alert", controller: self)
@@ -156,6 +197,7 @@ extension PhoneContactListViewController{
             filterdArray = allContacts
         }
         arrPhoneContacts.append(contentsOf: filterdArray)
+        self.arrPhoneContactsFiltered = self.arrPhoneContacts
         DispatchQueue.main.async {
             self.tblVw.reloadData()
         }
@@ -258,13 +300,13 @@ extension PhoneContactListViewController{
                 
                 if let dictData  = response["result"] as? [String:Any]{
                     print(dictData)
-                    self.arrPhoneContacts[strIndexPath].isSelected = true
+                    self.arrPhoneContactsFiltered[strIndexPath].isSelected = true
                     self.tblVw.reloadData()
                     
                 }else{
                     
                     if response["is_deleted"] as? Int == 1{
-                        self.arrPhoneContacts[strIndexPath].isSelected = false
+                        self.arrPhoneContactsFiltered[strIndexPath].isSelected = false
                         self.tblVw.reloadData()
                     }else{
                         objAlert.showAlert(message: "Something went Wrong", title: "Alert", controller: self)
@@ -273,7 +315,12 @@ extension PhoneContactListViewController{
                 
             }else{
                 objWebServiceManager.hideIndicator()
-                // objAlert.showAlert(message: message ?? "", title: "Alert", controller: self)
+                if let msg = response["result"]as? String{
+                    objAlert.showAlert(message: msg , title: "Alert", controller: self)
+                }else{
+                    
+                }
+                 
             }
             
             

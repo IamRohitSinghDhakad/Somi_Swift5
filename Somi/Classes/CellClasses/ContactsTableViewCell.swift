@@ -15,6 +15,7 @@ class ContactsTableViewCell: UITableViewCell {
     @IBOutlet weak var lblUserName: UILabel!
     @IBOutlet weak var lblPhoneNumber: UILabel!
     @IBOutlet var btnSave: UIButton!
+    @IBOutlet var vwSave: UIView!
     
     
     override func awakeFromNib() {

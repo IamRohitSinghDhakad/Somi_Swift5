@@ -28,13 +28,10 @@ class HistoryViewController: UIViewController {
         self.tblHistory.dataSource = self
         
         self.lblGetReq.textColor = UIColor.white
-      
         self.vwGetReq.layer.cornerRadius = 5
-        
         self.lblMyReq.textColor = UIColor.black
         self.vwMyreq.layer.backgroundColor = UIColor.white.cgColor
         self.vwMyreq.layer.borderWidth = 1.0
-        
         self.vwMyreq.layer.cornerRadius = 5
         
 //        self.userType = UserDefaults.standard.value(forKey: UserDefaults.Keys.userType)as? String ?? "Male"
@@ -95,6 +92,7 @@ class HistoryViewController: UIViewController {
     }
     
     @IBAction func actionBtnMyRequest(_ sender: Any) {
+        
         self.lblMyReq.textColor = UIColor.white
         if self.userType == "Male"{
             self.vwMyreq.layer.backgroundColor = UIColor.init(named: "appBlueColor")?.cgColor
